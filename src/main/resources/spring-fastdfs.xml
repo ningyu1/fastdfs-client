@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+   	http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd
+   	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+   	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+   	
+	<context:property-placeholder location="classpath:fastdfs.properties"/>
+	
+	<!--FastDFS连接池配置-->
+    <bean id="fastDfsConnectionPool" class="cn.tsoft.framework.fastdfs.pool.ConnectionPool" destroy-method="close">
+        <constructor-arg index="0" type="org.apache.commons.pool2.KeyedPooledObjectFactory">
+            <bean class="cn.tsoft.framework.fastdfs.pool.PooledConnectionFactory">
+                <constructor-arg index="0" type="int" value="${fastdfs.soTimeout}"/><!--soTimeout-->
+                <constructor-arg index="1" type="int" value="${fastdfs.connectTimeout}"/><!--connectTimeout-->
+            </bean>
+        </constructor-arg>
+        <constructor-arg index="1" type="org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig">
+            <bean class="org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig">
+                <property name="maxTotal" value="${fastdfs.maxTotal}"/>
+                <property name="maxTotalPerKey" value="${fastdfs.maxTotalPerKey}"/>
+                <property name="maxIdlePerKey" value="${fastdfs.maxIdlePerKey}"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <!--FastDfs命令执行器-->
+    <bean id="commandExecutor" class="cn.tsoft.framework.fastdfs.conn.DefaultCommandExecutor">
+        <constructor-arg index="0" type="java.lang.String" value="${fastdfs.trackers}"/>
+        <constructor-arg index="1" type="cn.tsoft.framework.fastdfs.pool.ConnectionPool" ref="fastDfsConnectionPool"/>
+    </bean>
+
+    <!--FastDFS Tracker Client-->
+    <bean id="trackerClient" class="cn.tsoft.framework.fastdfs.client.DefaultTrackerClient">
+        <constructor-arg index="0" type="cn.tsoft.framework.fastdfs.conn.CommandExecutor" ref="commandExecutor"/>
+    </bean>
+
+    <!--FastDFS Storage Client-->
+    <bean id="storageClient" class="cn.tsoft.framework.fastdfs.client.DefaultStorageClient">
+        <constructor-arg index="0" type="cn.tsoft.framework.fastdfs.conn.CommandExecutor" ref="commandExecutor"/>
+        <constructor-arg index="1" type="cn.tsoft.framework.fastdfs.client.TrackerClient" ref="trackerClient"/>
+    </bean>
+
+</beans>
