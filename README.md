@@ -31,7 +31,7 @@ StorageClient
 
 TrackerClient
 
-[https://ningyu1.github.io/site/img/fastdfs-client/2.png](https://ningyu1.github.io/site/img/fastdfs-client/2.png)
+![](https://ningyu1.github.io/site/img/fastdfs-client/2.png)
 
 ## Maven引入
 
