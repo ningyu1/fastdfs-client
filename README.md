@@ -11,10 +11,17 @@ fastdfs-client是一个访问fastdfs的Java客户端框架，帮助开发人员�
 
 ## change log
 
+[V1.1.0](https://github.com/ningyu1/fastdfs-client/releases/tag/V1.1.0)
+
+1. 修改download文件receive时带入的inputStream对象，inputStream对象修改为克隆socket的inputstream，避免污染连接池中的socket对象，当业务回调不读取留时会影响下一次连接池中获取的socket对象。
+2. 在使用1.0.0版本进行download文件时，建议使用DownloadCallback的实现类：DownloadByteArray和DownloadFileWriter不要自己去实现，不要关闭receive方法传入的inputStream对象。
+3. 在使用1.1.0版本进行download文件时，receive传入的inputStream是克隆的，因此使用完后必须进行关闭操作。
+
 [V1.0.0](https://github.com/ningyu1/fastdfs-client/releases/tag/V1.0.0)
-    1. 包装Request和Response报文解析
-    2. 包装Storage和Tracker操作命令
-    3. 增加连接池提升使用性能
+
+1. 包装Request和Response报文解析
+2. 包装Storage和Tracker操作命令
+3. 增加连接池提升使用性能
 
 ## 接口方法
 
