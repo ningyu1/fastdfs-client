@@ -12,9 +12,9 @@
 	<context:property-placeholder location="classpath:fastdfs.properties"/>
 	
 	<!--FastDFS连接池配置-->
-    <bean id="fastDfsConnectionPool" class="cn.tsoft.framework.fastdfs.pool.ConnectionPool" destroy-method="close">
+    <bean id="fastDfsConnectionPool" class="io.github.ningyu.fastdfs.pool.ConnectionPool" destroy-method="close">
         <constructor-arg index="0" type="org.apache.commons.pool2.KeyedPooledObjectFactory">
-            <bean class="cn.tsoft.framework.fastdfs.pool.PooledConnectionFactory">
+            <bean class="io.github.ningyu.fastdfs.pool.PooledConnectionFactory">
                 <constructor-arg index="0" type="int" value="${fastdfs.soTimeout}"/><!--soTimeout-->
                 <constructor-arg index="1" type="int" value="${fastdfs.connectTimeout}"/><!--connectTimeout-->
             </bean>
@@ -29,20 +29,20 @@
     </bean>
 
     <!--FastDfs命令执行器-->
-    <bean id="commandExecutor" class="cn.tsoft.framework.fastdfs.conn.DefaultCommandExecutor">
+    <bean id="commandExecutor" class="io.github.ningyu.fastdfs.conn.DefaultCommandExecutor">
         <constructor-arg index="0" type="java.lang.String" value="${fastdfs.trackers}"/>
-        <constructor-arg index="1" type="cn.tsoft.framework.fastdfs.pool.ConnectionPool" ref="fastDfsConnectionPool"/>
+        <constructor-arg index="1" type="io.github.ningyu.fastdfs.pool.ConnectionPool" ref="fastDfsConnectionPool"/>
     </bean>
 
     <!--FastDFS Tracker Client-->
-    <bean id="trackerClient" class="cn.tsoft.framework.fastdfs.client.DefaultTrackerClient">
-        <constructor-arg index="0" type="cn.tsoft.framework.fastdfs.conn.CommandExecutor" ref="commandExecutor"/>
+    <bean id="trackerClient" class="io.github.ningyu.fastdfs.client.DefaultTrackerClient">
+        <constructor-arg index="0" type="io.github.ningyu.fastdfs.conn.CommandExecutor" ref="commandExecutor"/>
     </bean>
 
     <!--FastDFS Storage Client-->
-    <bean id="storageClient" class="cn.tsoft.framework.fastdfs.client.DefaultStorageClient">
-        <constructor-arg index="0" type="cn.tsoft.framework.fastdfs.conn.CommandExecutor" ref="commandExecutor"/>
-        <constructor-arg index="1" type="cn.tsoft.framework.fastdfs.client.TrackerClient" ref="trackerClient"/>
+    <bean id="storageClient" class="io.github.ningyu.fastdfs.client.DefaultStorageClient">
+        <constructor-arg index="0" type="io.github.ningyu.fastdfs.conn.CommandExecutor" ref="commandExecutor"/>
+        <constructor-arg index="1" type="io.github.ningyu.fastdfs.client.TrackerClient" ref="trackerClient"/>
     </bean>
 
 </beans>

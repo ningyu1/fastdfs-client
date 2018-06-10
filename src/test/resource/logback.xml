@@ -43,85 +43,11 @@
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
         </encoder>
     </appender>
-     <!-- 按照每天生成日志文件：DISCONF日志 -->   
-    <appender name="DISCONF"  class="ch.qos.logback.core.rolling.RollingFileAppender">   
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
-            <FileNamePattern>${LOG_SYS_HOME}/disconf.%d{yyyy-MM-dd}.log</FileNamePattern> 
-            <!--日志文件保留天数-->
-            <MaxHistory>${LOG_MAX_HISTORY}</MaxHistory>
-        </rollingPolicy>   
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> 
-            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符--> 
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>   
-        </encoder> 
-    </appender>
-    <!-- 按照每天生成日志文件：DUBBO日志-->
-    <appender name="DUBBO" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
-            <FileNamePattern>${LOG_SYS_HOME}/dubbo.%d{yyyy-MM-dd}.log</FileNamePattern>
-            <!--日志文件保留天数-->
-            <MaxHistory>${LOG_MAX_HISTORY}</MaxHistory>
-        </rollingPolicy>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <!-- 格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
-        </encoder>
-    </appender>
-    
-    <!-- 按照每天生成日志文件：DORADO日志-->
-    <appender name="DORADO" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
-            <FileNamePattern>${LOG_APP_HOME}/dorado.%d{yyyy-MM-dd}.log</FileNamePattern>
-            <!--日志文件保留天数-->
-            <MaxHistory>${LOG_MAX_HISTORY}</MaxHistory>
-        </rollingPolicy>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <!-- 格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
-        </encoder>
-    </appender>
-    
-    <!-- 按照每天生成日志文件：CAT日志-->
-    <appender name="CAT" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
-            <FileNamePattern>${LOG_APP_HOME}/cat.%d{yyyy-MM-dd}.log</FileNamePattern>
-            <!--日志文件保留天数-->
-            <MaxHistory>${LOG_MAX_HISTORY}</MaxHistory>
-        </rollingPolicy>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <!-- 格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
-        </encoder>
-    </appender>
 	
     <!--============================ 按照每天生成日志文件：默认配置 ==========================-->
-    <logger name="com.alibaba.dubbo" additivity="true">
-    	<level value="info" />
-    	<appender-ref ref="DUBBO"/>
-    </logger>
-    <logger name="dubbo.accesslog" additivity="true">
-    	<level value="info" />
-    	<appender-ref ref="DUBBO"/>
-    </logger>
-    <logger name="com.baidu.disconf" additivity="true">
-    	<level value="info" />
-    	<appender-ref ref="DISCONF"/>
-    </logger>
-    <logger name="com.bstek.dorado" additivity="true">
-    	<level value="info" />
-    	<appender-ref ref="DORADO"/>
-    </logger>
-    <logger name="com.dianping.cat" additivity="true">
-    	<level value="info" />
-    	<appender-ref ref="CAT"/>
-    </logger>
 	
     <!--===============================  日志输出: 默认主业务日志 ======================================-->
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="APP"/>
         <appender-ref ref="STDOUT"/>
     </root>
