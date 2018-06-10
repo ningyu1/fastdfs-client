@@ -11,6 +11,11 @@ fastdfs-client是一个访问fastdfs的Java客户端框架，帮助开发人员�
 
 ## change log
 
+[V1.1.1](https://github.com/ningyu1/fastdfs-client/releases/tag/V1.1.1)
+
+1. 去掉pom中parent的依赖
+2. 重构包名
+
 [V1.1.0](https://github.com/ningyu1/fastdfs-client/releases/tag/V1.1.0)
 
 1. 修改download文件receive时带入的inputStream对象，inputStream对象修改为克隆socket的inputstream，避免污染连接池中的socket对象，当业务回调不读取留时会影响下一次连接池中获取的socket对象。
