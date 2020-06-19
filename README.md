@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/ningyu1/fastdfs-client)
+
 # fastdfs-client是什么
 
 fastdfs-client是一个访问fastdfs的Java客户端框架，帮助开发人员快速使用分布式文件系统的工具，封装了TrackerClient操作来管理存储节点，封装了StorageClient操作来执行文件上传下载功能。
