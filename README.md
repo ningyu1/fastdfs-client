@@ -4,6 +4,11 @@ fastdfs-client是一个访问fastdfs的Java客户端框架，帮助开发人员�
 
 具体查看：https://ningyu1.github.io/site/post/21-fastfds-client/
 
+## 项目地址
+[fastdfs-client](https://github.com/ningyu1/fastdfs-client) 
+
+<a href="https://github.com/ningyu1/fastdfs-client/releases"><img src="https://img.shields.io/github/release/ningyu1/fastdfs-client.svg?style=social&amp;label=Release"></a>&nbsp;<a href="https://github.com/ningyu1/fastdfs-client/stargazers"><img src="https://img.shields.io/github/stars/ningyu1/fastdfs-client.svg?style=social&amp;label=Star"></a>&nbsp;<a href="https://github.com/ningyu1/fastdfs-client/fork"><img src="https://img.shields.io/github/forks/ningyu1/fastdfs-client.svg?style=social&amp;label=Fork"></a>&nbsp;<a href="https://github.com/ningyu1/fastdfs-client/watchers"><img src="https://img.shields.io/github/watchers/ningyu1/fastdfs-client.svg?style=social&amp;label=Watch"></a> <a href="http://www.gnu.org/licenses/gpl-3.0.html"><img src="https://img.shields.io/badge/license-GPLv3-blue.svg"></a>
+
 ## change log
 
 [V1.1.1](https://github.com/ningyu1/fastdfs-client/releases/tag/V1.1.1)
